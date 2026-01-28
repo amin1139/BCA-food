@@ -2,19 +2,21 @@ import { useState } from 'react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const logo = new URL('../assets/logo.png', import.meta.url);
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  console.log(logo);
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="bg-white shadow-lg ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-blue-600">Logo</span>
+              <img src={logo} alt="Logo" width="120" />
             </a>
           </div>
 
