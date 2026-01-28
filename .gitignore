@@ -3,3 +3,9 @@ node_modules/
 
 # Lock file
 package-lock.json
+
+# Parcel cache
+.parcel-cache/
+
+# Build output
+dist/

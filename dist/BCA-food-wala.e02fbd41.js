@@ -17477,187 +17477,91 @@ function Navbar() {
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
         className: "bg-white shadow-lg",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "flex justify-between items-center h-16",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "flex-shrink-0",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                href: "/",
-                                className: "flex items-center",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    className: "text-2xl font-bold text-blue-600",
-                                    children: "Logo"
-                                }, void 0, false, {
-                                    fileName: "src/component/Header.jsx",
-                                    lineNumber: 17,
-                                    columnNumber: 15
-                                }, this)
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "flex justify-between items-center h-16",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex-shrink-0",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                            href: "/",
+                            className: "flex items-center",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "text-2xl font-bold text-blue-600",
+                                children: "Logo"
                             }, void 0, false, {
                                 fileName: "src/component/Header.jsx",
-                                lineNumber: 16,
-                                columnNumber: 13
+                                lineNumber: 17,
+                                columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/Header.jsx",
-                            lineNumber: 15,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "hidden md:flex space-x-8",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                    href: "#home",
-                                    className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
-                                    children: "Home"
-                                }, void 0, false, {
-                                    fileName: "src/component/Header.jsx",
-                                    lineNumber: 23,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                    href: "#about",
-                                    className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
-                                    children: "About"
-                                }, void 0, false, {
-                                    fileName: "src/component/Header.jsx",
-                                    lineNumber: 26,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                    href: "#services",
-                                    className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
-                                    children: "Services"
-                                }, void 0, false, {
-                                    fileName: "src/component/Header.jsx",
-                                    lineNumber: 29,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                    href: "#contact",
-                                    className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
-                                    children: "Contact"
-                                }, void 0, false, {
-                                    fileName: "src/component/Header.jsx",
-                                    lineNumber: 32,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/component/Header.jsx",
-                            lineNumber: 22,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "md:hidden",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                onClick: toggleMenu,
-                                className: "text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600",
-                                "aria-label": "Toggle menu",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                                    className: "h-6 w-6",
-                                    fill: "none",
-                                    strokeLinecap: "round",
-                                    strokeLinejoin: "round",
-                                    strokeWidth: "2",
-                                    viewBox: "0 0 24 24",
-                                    stroke: "currentColor",
-                                    children: isMenuOpen ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                                        d: "M6 18L18 6M6 6l12 12"
-                                    }, void 0, false, {
-                                        fileName: "src/component/Header.jsx",
-                                        lineNumber: 54,
-                                        columnNumber: 19
-                                    }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                                        d: "M4 6h16M4 12h16M4 18h16"
-                                    }, void 0, false, {
-                                        fileName: "src/component/Header.jsx",
-                                        lineNumber: 56,
-                                        columnNumber: 19
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "src/component/Header.jsx",
-                                    lineNumber: 44,
-                                    columnNumber: 15
-                                }, this)
+                            lineNumber: 16,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/component/Header.jsx",
+                        lineNumber: 15,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "hidden md:flex space-x-8",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                href: "#home",
+                                className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
+                                children: "Home"
                             }, void 0, false, {
                                 fileName: "src/component/Header.jsx",
-                                lineNumber: 39,
+                                lineNumber: 22,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                href: "#about",
+                                className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
+                                children: "About"
+                            }, void 0, false, {
+                                fileName: "src/component/Header.jsx",
+                                lineNumber: 25,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                href: "#services",
+                                className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
+                                children: "Services"
+                            }, void 0, false, {
+                                fileName: "src/component/Header.jsx",
+                                lineNumber: 28,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                href: "#contact",
+                                className: "text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium",
+                                children: "Contact"
+                            }, void 0, false, {
+                                fileName: "src/component/Header.jsx",
+                                lineNumber: 31,
                                 columnNumber: 13
                             }, this)
-                        }, void 0, false, {
-                            fileName: "src/component/Header.jsx",
-                            lineNumber: 38,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/component/Header.jsx",
-                    lineNumber: 13,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/component/Header.jsx",
+                        lineNumber: 21,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "src/component/Header.jsx",
-                lineNumber: 12,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: `md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`,
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            href: "#home",
-                            className: "block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-300 font-medium",
-                            children: "Home"
-                        }, void 0, false, {
-                            fileName: "src/component/Header.jsx",
-                            lineNumber: 71,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            href: "#about",
-                            className: "block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-300 font-medium",
-                            children: "About"
-                        }, void 0, false, {
-                            fileName: "src/component/Header.jsx",
-                            lineNumber: 77,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            href: "#services",
-                            className: "block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-300 font-medium",
-                            children: "Services"
-                        }, void 0, false, {
-                            fileName: "src/component/Header.jsx",
-                            lineNumber: 83,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            href: "#contact",
-                            className: "block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-300 font-medium",
-                            children: "Contact"
-                        }, void 0, false, {
-                            fileName: "src/component/Header.jsx",
-                            lineNumber: 89,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/component/Header.jsx",
-                    lineNumber: 70,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/component/Header.jsx",
-                lineNumber: 65,
-                columnNumber: 7
+                lineNumber: 13,
+                columnNumber: 9
             }, this)
-        ]
-    }, void 0, true, {
+        }, void 0, false, {
+            fileName: "src/component/Header.jsx",
+            lineNumber: 12,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "src/component/Header.jsx",
         lineNumber: 11,
         columnNumber: 5
