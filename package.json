@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-shimmer-effects": "^1.0.4",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

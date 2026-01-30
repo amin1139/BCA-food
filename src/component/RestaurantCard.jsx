@@ -13,7 +13,6 @@ const RestaurantCard = ({ resData }) => {
     aggregatedDiscountInfoV3
   } = resData;
 
-  console.log(resData);
 
   return (
     <div className="w-full max-w-sm rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
