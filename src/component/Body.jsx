@@ -9,6 +9,7 @@ const RestaurantList = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [activeFilter, setActiveFilter] = useState(false);
   const [headerTitle, setHeaderTitle] = useState('')
+  const [searchText, setSearchText] = useState ('')
 
   useEffect(() => {
     fetchRestaurants();
@@ -20,6 +21,12 @@ const RestaurantList = () => {
     setRestaurants(resList);
     setFilteredRestaurants(resList);
     setHeaderTitle(data?.data?.cards[1]?.card?.card?.header?.title)
+  }
+  console.log(restaurants);
+  const searchFilter = () => {
+    const searchRes = restaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase().trim()))
+    setFilteredRestaurants(searchRes)
+    console.log(searchRes);
   }
 
   const applyFilter = (type, fn) => {
@@ -79,12 +86,24 @@ const RestaurantList = () => {
       
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">{headerTitle}</h1>
+
+        <div className="mb-5">
+          <input className="outline-1" type="text" value={searchText} onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              searchFilter();
+            }
+          }} onChange={(e) => setSearchText(e.target.value)} />
+          <button onClick={searchFilter} className="outline-1">Search</button>
+        </div>
+
         <div className="flex gap-2 items-center font-bold text-lg mb-8">
           <h2>Filter By :</h2>
+          
           {filtertitle.map((e) => (
             <FilterBtn key={e.type} title={e.title} isActive={activeFilter === e.type} onClick={() => applyFilter(e.type, e.fn)} all={reset} />
           ))}
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredRestaurants.map((res) => (
             <RestaurantCard key={res.info.id} resData={res.info} />
