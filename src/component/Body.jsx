@@ -13,6 +13,7 @@ const RestaurantList = () => {
 
   useEffect(() => {
     fetchRestaurants();
+    console.log('fetch');
   }, [])
 
   const fetchRestaurants = async () => {
@@ -22,7 +23,7 @@ const RestaurantList = () => {
     setFilteredRestaurants(resList);
     setHeaderTitle(data?.data?.cards[1]?.card?.card?.header?.title)
   }
-  console.log(restaurants);
+
   const searchFilter = () => {
     const searchRes = restaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase().trim()))
     setFilteredRestaurants(searchRes)
@@ -78,6 +79,13 @@ const RestaurantList = () => {
 
   if (restaurants.length === 0) {
     return <div className="mt-6"><Shimmer /></div>
+  }
+
+  if (filteredRestaurants.length === 0) {
+    return <div className="min-h-screen flex items-center">
+      <div className=" text-3xl font-bold">OPPs!!! NOT FOUND</div>
+      <button onClick={()=>setFilteredRestaurants(restaurants)}> BACK </button>
+    </div>
   }
 
   return (

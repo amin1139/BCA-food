@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,18 +15,18 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src={logo} alt="Logo" width="120" />
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
+            <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               Home
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
+            </Link>
+            <Link to="/about"  className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               About
-            </a>
+            </Link>
             <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               Services
             </a>
