@@ -1,8 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; 
 import { getResData } from "../api/restaurantData";
 import FilterBtn from "./FilterBtn";
+import { Link } from "react-router";
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -18,16 +19,19 @@ const RestaurantList = () => {
 
   const fetchRestaurants = async () => {
     const data = await getResData();
+    console.log(data);
+    
     const resList = data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
     setRestaurants(resList);
     setFilteredRestaurants(resList);
     setHeaderTitle(data?.data?.cards[1]?.card?.card?.header?.title)
+    console.log(resList);
   }
 
   const searchFilter = () => {
     const searchRes = restaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase().trim()))
     setFilteredRestaurants(searchRes)
-    console.log(searchRes);
+    setSearchText('')
   }
 
   const applyFilter = (type, fn) => {
@@ -114,7 +118,7 @@ const RestaurantList = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredRestaurants.map((res) => (
-            <RestaurantCard key={res.info.id} resData={res.info} />
+            <Link key={res.info.id} to={'restaurants/'+res.info.id}> <RestaurantCard key={res.info.id} resData={res.info} /> </Link>
           ))}
         </div>
       </div>
