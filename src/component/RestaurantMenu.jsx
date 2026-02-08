@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { useParams } from 'react-router';
 import { getResMenuData } from '../api/restaurantData';
-
+import { MenuShimmer } from './Shimmer';
 
 export default function RestaurantPage() {
 
@@ -10,6 +10,7 @@ export default function RestaurantPage() {
   const [resInfo, setResInfo] = useState()
   const [dealInfo, setDealInfo] = useState([])
   const [menuList, setMenuList] = useState([])
+  const [loading, setLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState({});
   const [scrollPosition, setScrollPosition] = useState(0);
   const { resId } = useParams()
@@ -22,6 +23,7 @@ export default function RestaurantPage() {
   }, [])
 
   const fetchMenuData = async () => {
+    setLoading(true)
     const data = await getResMenuData(resId);
     setResName(data.data.cards[0].card.card.text)
     setResInfo(data.data.cards[2].card.card.info)
@@ -29,10 +31,8 @@ export default function RestaurantPage() {
     const onlyFoodCategories = data.data.cards[5].groupedCard.cardGroupMap.REGULAR.cards.map(item => item?.card?.card)
       .filter(card => card?.itemCards);
     setMenuList(onlyFoodCategories)
-    console.log(menuList);
+    setLoading(false)
   };
-  console.log(menuList);
-  console.log(expandedCategories);
 
   const getUniqueItems = (itemCards) => {
     return [
@@ -65,6 +65,14 @@ export default function RestaurantPage() {
       setScrollPosition(container.scrollLeft + scrollAmount);
     }
   };
+
+  if(loading){
+    return(<MenuShimmer/>)
+  }
+
+  if (!loading && menuList.length === 0) {
+    return <h1>No menu available</h1>;
+  }
 
   return (
     <div className="min-h-screen bg-white">

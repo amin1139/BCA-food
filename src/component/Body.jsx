@@ -17,6 +17,7 @@ const RestaurantList = () => {
     console.log('fetch');
   }, [])
 
+
   const fetchRestaurants = async () => {
     const data = await getResData();
     console.log(data);

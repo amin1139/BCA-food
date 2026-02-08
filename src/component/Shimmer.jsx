@@ -1,5 +1,5 @@
 import React from "react";
-import { ShimmerPostList } from "react-shimmer-effects";
+import { ShimmerPostList, ShimmerThumbnail, ShimmerContentBlock } from "react-shimmer-effects";
 
 const Shimmer = () => {
   return(
@@ -7,4 +7,19 @@ const Shimmer = () => {
   )
 }
 
+export const MenuShimmer = () => {
+
+  return (
+    <>
+      <ShimmerThumbnail height={250} rounded />
+      <ShimmerContentBlock
+          title
+          text
+          cta
+          thumbnailWidth={370}
+          thumbnailHeight={370}
+        />
+    </>
+  )
+}
 export default Shimmer
