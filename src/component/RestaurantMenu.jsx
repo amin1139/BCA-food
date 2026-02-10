@@ -1,38 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { useParams } from 'react-router';
-import { getResMenuData } from '../api/restaurantData';
 import { MenuShimmer } from './Shimmer';
+import {IMG_URL} from '../utils/constant'
+import useRestarantMenu from '../utils/useRestarantMenu';
 
 export default function RestaurantPage() {
 
-  const [resName, setResName] = useState('')
-  const [resInfo, setResInfo] = useState()
-  const [dealInfo, setDealInfo] = useState([])
-  const [menuList, setMenuList] = useState([])
-  const [loading, setLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState({});
   const [scrollPosition, setScrollPosition] = useState(0);
+
   const { resId } = useParams()
-  const offerImgUrl = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/'
+
+  const data = useRestarantMenu(resId);
+
+  const resName = data?.data?.cards[0]?.card?.card?.text
+  const resInfo = data?.data?.cards[2]?.card?.card?.info
+  const dealInfo = data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.offers || []
+  const menuList =
+    data?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+      ?.map(item => item?.card?.card)
+      ?.filter(card => card?.itemCards) || []
 
 
-
-  useEffect(() => {
-    fetchMenuData();
-  }, [])
-
-  const fetchMenuData = async () => {
-    setLoading(true)
-    const data = await getResMenuData(resId);
-    setResName(data.data.cards[0].card.card.text)
-    setResInfo(data.data.cards[2].card.card.info)
-    setDealInfo(data.data.cards[3].card.card.gridElements.infoWithStyle.offers)
-    const onlyFoodCategories = data.data.cards[5].groupedCard.cardGroupMap.REGULAR.cards.map(item => item?.card?.card)
-      .filter(card => card?.itemCards);
-    setMenuList(onlyFoodCategories)
-    setLoading(false)
-  };
+  console.log(data);
+  
 
   const getUniqueItems = (itemCards) => {
     return [
@@ -66,22 +58,18 @@ export default function RestaurantPage() {
     }
   };
 
-  if(loading){
+  if(!data){
     return(<MenuShimmer/>)
   }
 
-  if (!loading && menuList.length === 0) {
-    return <h1>No menu available</h1>;
-  }
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-30">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Restaurant Name */}
         <h1 className="text-4xl font-bold text-gray-800 mb-6">{resName}</h1>
 
         {/* Restaurant Info Box */}
-        <div className="bg-gradient-to-b from-white to-gray-50 rounded-2xl shadow-sm border border-gray-200 p-5 mb-8">
+        <div className="bg-linear-to-b from-white to-gray-50 rounded-2xl shadow-sm border border-gray-200 p-5 mb-8">
           <div className="flex items-start gap-3 mb-4">
             <div className="flex items-center gap-1 bg-green-600 text-white px-2 py-1 rounded">
               <Star size={14} fill="white" />
@@ -151,11 +139,11 @@ export default function RestaurantPage() {
             {dealInfo.map((deal) => (
               <div
                 key={deal?.info?.offerIds[0]}
-                className="flex-shrink-0 w-60 border-2 border-gray-200 rounded-xl p-2 hover:shadow-md transition-shadow cursor-pointer"
+                className="shrink-0 w-60 border-2 border-gray-200 rounded-xl p-2 hover:shadow-md transition-shadow cursor-pointer"
               >
                 <div className="flex items-center gap-3">
                   <div >
-                    <img src={offerImgUrl + deal?.info?.offerLogo} alt="offer" className="h-15 object-contain" />
+                    <img src={IMG_URL + deal?.info?.offerLogo} alt="offer" className="h-15 object-contain" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-800 text-lg">{deal?.info?.header}</div>
@@ -203,7 +191,7 @@ export default function RestaurantPage() {
                 className={`
                   overflow-hidden transition-all duration-300 ease-in-out
                   ${expandedCategories[menu.categoryId]
-                    ? "max-h-[1000px] opacity-100 translate-y-0"
+                    ? "max-h-250 opacity-100 translate-y-0"
                     : "max-h-0 opacity-0 -translate-y-2"}
                 `}
               >
@@ -229,7 +217,7 @@ export default function RestaurantPage() {
                             <p className="font-semibold text-gray-700 mb-2">
                               ₹{item?.price/100 || item?.defaultPrice/100}
                             </p>
-                            <p className="text-sm text-gray-500 leading-relaxed">
+                            <p className="text-sm text-gray-500 leading-relaxed ">
                               {item.description}
                             </p>
                           </div>
@@ -237,9 +225,9 @@ export default function RestaurantPage() {
                       </div>
 
                       {/* Image */}
-                      <div className="relative flex-shrink-0">
+                      <div className="relative shrink-0">
                         <img
-                          src={offerImgUrl+item.imageId}
+                          src={IMG_URL+item.imageId}
                           alt={item.name}
                           className="w-36 h-36 object-cover rounded-xl"
                         />

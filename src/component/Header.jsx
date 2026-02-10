@@ -1,22 +1,25 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const logo = new URL('../assets/logo.png', import.meta.url);
+  const logo = new URL('../assets/Logo.png', import.meta.url);
   
+  const status = useOnlineStatus()
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   return (
-    <nav className="bg-white shadow-lg ">
+    <nav className="bg-white shadow-[0_6px_12px_rgba(0,0,0,0.35)] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="Logo" width="120" />
+            <div className='flex items-center gap-0.5'>
+              <img src={logo} alt="Logo" className={status ? "h-23 w-auto object-contain" : "h-23 w-auto object-contain grayscale"} />
+              <span className={status ? 'h-4 w-4 rounded-full bg-yellow-400': 'h-4 w-4 rounded-full bg-gray-500'}></span>
+              <span className='font-bold'>{status ? 'online' : 'offline'}</span>
+            </div>
             </Link>
           </div>
 

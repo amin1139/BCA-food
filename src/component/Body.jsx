@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getResData } from "../api/restaurantData";
 import FilterBtn from "./FilterBtn";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -11,11 +12,14 @@ const RestaurantList = () => {
   const [activeFilter, setActiveFilter] = useState(false);
   const [headerTitle, setHeaderTitle] = useState('')
   const [searchText, setSearchText] = useState ('')
+  const status = useOnlineStatus()
 
   useEffect(() => {
     fetchRestaurants();
     console.log('fetch');
   }, [])
+
+  
 
 
   const fetchRestaurants = async () => {
@@ -82,6 +86,10 @@ const RestaurantList = () => {
       },
   ]
 
+  if(!status){
+    return <div className=" text-3xl font-bold">NO INTERNET</div>
+  }
+
   if (restaurants.length === 0) {
     return <div className="mt-6"><Shimmer /></div>
   }
@@ -93,9 +101,11 @@ const RestaurantList = () => {
     </div>
   }
 
+  
+
   return (
 
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-30 p-6">
       
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">{headerTitle}</h1>

@@ -23,7 +23,7 @@ const RestaurantCard = ({ resData }) => {
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
         {aggregatedDiscountInfoV3 && (
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-4">
             <p className="text-white font-bold text-xl">{aggregatedDiscountInfoV3?.header +' ' + aggregatedDiscountInfoV3?.subHeader}</p>
           </div>
         )}
