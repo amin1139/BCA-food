@@ -1,80 +1,72 @@
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
-import react from "react"
+import React from "react";
 import { MdEmail } from "react-icons/md";
-import { DiHtml5 } from "react-icons/di";
-// import User from "./User";
 
-class AboutUs extends react.Component {
-    constructor(props){
-        super(props)
-        this.state={
-            userInfo:{},
+class AboutUs extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userInfo: {},
             loading: true,
             error: null
-        }
-        console.log('parent constructor');
+        };
     }
 
-    async componentDidMount(){
-        
-        try{
-            const data = await fetch('https://api.github.com/users/amin1139')
+    async componentDidMount() {
+
+        try {
+            const data = await fetch("https://api.github.com/users/amin1139");
             if (!data.ok) {
                 throw new Error(`HTTP error! Status: ${data.status}`);
             }
-            console.log(data);
-            
-            const json = await data.json()
+
+            const json = await data.json();
             this.setState({
                 userInfo: json,
                 loading: false
-            })
-            console.log(json);
-        } catch(error){
-            console.log("Fetching error:", error);
-
+            });
+        } catch (error) {
             this.setState({
                 loading: false,
                 error: error.message
-            })
+            });
         }
-        
+
     }
 
-    render(){
-        console.log('parent render');
-        const {userInfo, loading} = this.state
+    render() {
+        const { userInfo, loading } = this.state;
 
         const myInfo = {
             socialMedia: [
-                {socialMediaName: 'Github', socialMediaIcon: <FaGithub/>},
-                {socialMediaName: 'LinkedIn', socialMediaIcon: <FaLinkedin />},
-                {socialMediaName: 'Email', socialMediaIcon: <MdEmail />},
+                { socialMediaName: "Github", socialMediaIcon: <FaGithub /> },
+                { socialMediaName: "LinkedIn", socialMediaIcon: <FaLinkedin /> },
+                { socialMediaName: "Email", socialMediaIcon: <MdEmail /> },
             ],
-            skill: ['HTML','CSS', 'Javascript', 'Tailwind', 'GitHub'],
-            project: ['Swiggy Clone (React + API)', 'Netflix Clone', 'Youtube clone']
-        }
+            skill: ["HTML", "CSS", "Javascript", "Tailwind", "GitHub"],
+            project: ["Swiggy Clone (React + API)", "Netflix Clone", "Youtube clone"]
+        };
 
-        if(loading){
-            return(
-                <h1 className="text-4xl">LOADING...</h1>
-            )
+        if (loading) {
+            return (
+                <h1 className="px-6 py-10 text-4xl text-gray-800 dark:text-slate-100">LOADING...</h1>
+            );
         }
         if (this.state.error) {
-            return <h2 className="text-4xl">Error: {this.state.error}</h2>;
-            
+            return <h2 className="px-6 py-10 text-4xl text-red-600 dark:text-red-400">Error: {this.state.error}</h2>;
+
         }
 
-        return(
+        return (
             <>
-                <div className="min-h-screen from-orange-50 to-white py-12 px-4">
+                <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white py-12 px-4 dark:from-slate-900 dark:to-slate-800">
 
                     <div className="max-w-6xl mx-auto">
 
                         {/* Top Card */}
-                        <div className="bg-white shadow-xl rounded-2xl p-8">
+                        <div className="bg-white shadow-xl rounded-2xl p-8 dark:bg-slate-800 dark:shadow-black/40">
 
                             <div className="flex flex-col md:flex-row items-center gap-10">
 
@@ -87,7 +79,7 @@ class AboutUs extends react.Component {
 
                                 {/* Intro */}
                                 <div>
-                                    <h1 className="text-4xl font-bold text-gray-800">
+                                    <h1 className="text-4xl font-bold text-gray-800 dark:text-slate-100">
                                         {userInfo.name}
                                     </h1>
 
@@ -97,12 +89,12 @@ class AboutUs extends react.Component {
 
                                     {/* Social Buttons */}
                                     <div className="flex gap-4 mt-6">
-                                        {myInfo.socialMedia.map((info, i)=>{
-                                            return(
-                                                <button key={i} className="flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-black">
+                                        {myInfo.socialMedia.map((info, i) => {
+                                            return (
+                                                <button key={i} className="flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-black dark:bg-slate-700 dark:hover:bg-slate-600">
                                                     {info.socialMediaIcon} {info.socialMediaName}
                                                 </button>
-                                            )
+                                            );
                                         })}
                                     </div>
                                 </div>
@@ -110,24 +102,24 @@ class AboutUs extends react.Component {
                         </div>
 
                         {/* Skills Section */}
-                        <div className="mt-10 bg-white shadow-xl rounded-2xl p-8">
-                            <h2 className="text-2xl font-bold mb-6 text-gray-800">Skills</h2>
+                        <div className="mt-10 bg-white shadow-xl rounded-2xl p-8 dark:bg-slate-800 dark:shadow-black/40">
+                            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-slate-100">Skills</h2>
 
                             <div className="flex flex-wrap gap-4">
-                                {myInfo.skill.map((skill,i)=>{
-                                    return <span key={i}className="bg-orange-100 text-orange-600 px-4 py-2 rounded-full flex item-center">{skill}</span>
+                                {myInfo.skill.map((skill, i) => {
+                                    return <span key={i} className="bg-orange-100 text-orange-600 px-4 py-2 rounded-full flex item-center dark:bg-orange-950 dark:text-orange-300">{skill}</span>;
                                 })}
-                                
+
                             </div>
                         </div>
 
                         {/* Projects Section */}
-                        <div className="mt-10 bg-white shadow-xl rounded-2xl p-8">
-                            <h2 className="text-2xl font-bold mb-6 text-gray-800">Projects</h2>
+                        <div className="mt-10 bg-white shadow-xl rounded-2xl p-8 dark:bg-slate-800 dark:shadow-black/40">
+                            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-slate-100">Projects</h2>
 
-                            <ul className="list-disc ml-6 text-gray-600 space-y-2">
-                                {myInfo.project.map((projects,i)=>{
-                                    return <li key={i}>{projects}</li>
+                            <ul className="list-disc ml-6 text-gray-600 space-y-2 dark:text-slate-300">
+                                {myInfo.project.map((projects, i) => {
+                                    return <li key={i}>{projects}</li>;
                                 })}
                             </ul>
                         </div>
@@ -135,8 +127,8 @@ class AboutUs extends react.Component {
                     </div>
                 </div>
             </>
-        )
+        );
 
     }
 }
-export default AboutUs
+export default AboutUs;
