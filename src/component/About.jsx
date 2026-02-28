@@ -61,7 +61,7 @@ class AboutUs extends React.Component {
 
         return (
             <>
-                <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white py-12 px-4 dark:from-slate-900 dark:to-slate-800">
+                <div className="min-h-screen bg-linear-to-b from-orange-50 to-white py-12 px-4 dark:from-slate-900 dark:to-slate-800">
 
                     <div className="max-w-6xl mx-auto">
 

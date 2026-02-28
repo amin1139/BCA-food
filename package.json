@@ -2,23 +2,29 @@
   "name": "bca-food-wala",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
   "author": "amin",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/postcss": "^4.1.18",
     "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-icons": "^5.5.0",
+    "react-redux": "^9.2.0",
     "react-router": "^7.13.0",
     "react-shimmer-effects": "^1.0.4",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "parcel": "^2.16.3"
   }
 }

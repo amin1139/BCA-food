@@ -7,6 +7,7 @@ import { RES_LIST_URL } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useFetchData from "../utils/useFetchData";
 
+
 const RestaurantList = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [activeFilter, setActiveFilter] = useState(false);
@@ -34,21 +35,21 @@ const RestaurantList = () => {
 
   const filterTopRated = () => {
     const topRated = restaurants.filter(
-      (res) => res.info.avgRating >= 4.5
+      (res) => res?.info?.avgRating >= 4.5
     );
     setFilteredRestaurants(topRated);
   };
 
   const filterVeg = () => {
     const vegRes = restaurants.filter(
-      (res) => res.info.veg === true
+      (res) => res?.info?.veg === true
     );
     setFilteredRestaurants(vegRes);
   };
 
   const filterFastDelivery = () => {
     const fast = restaurants.filter(
-      (res) => res.info.sla.deliveryTime <= 25
+      (res) => res?.info?.sla?.deliveryTime <= 25
     );
     setFilteredRestaurants(fast);
   };
@@ -140,7 +141,9 @@ const RestaurantList = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredRestaurants.map((res) => (
-            <Link key={res.info.id} to={'restaurants/'+res.info.id}> <RestaurantCard key={res.info.id} resData={res.info} /> </Link>
+            <Link key={res?.info?.id} to={'restaurants/'+res?.info?.id}> 
+              <RestaurantCard key={res?.info?.id} resData={res?.info || []} />
+            </Link>
           ))}
         </div>
       </div>

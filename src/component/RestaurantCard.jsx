@@ -56,7 +56,7 @@ const RestaurantCard = ({ resData }) => {
 
         {/* Cuisines */}
         <p className="text-sm text-gray-500 truncate mb-1 dark:text-slate-400">
-          {cuisines.join(', ')}
+          {cuisines?.join(', ')}
         </p>
 
         {/* Location */}
