@@ -9,8 +9,6 @@ import MenuSection from './MenuSection';
 
 export default function RestaurantPage() {
 
-  const [expandedCategories, setExpandedCategories] = useState({});
-
   const { resId } = useParams();
 
   const { resData, loading, error } = useFetchData(RES_MENU_URL + resId);
@@ -23,28 +21,7 @@ export default function RestaurantPage() {
       ?.map((item) => item?.card?.card)
       ?.filter((card) => card?.itemCards || card?.categories) || [];
 
-  const getUniqueItems = (itemCards) => {
-    return [
-      ...new Map(
-        itemCards.map((item) => [
-          item.card.info.id,
-          item.card.info
-        ])
-      ).values()
-    ];
-  };
-
-  const toggleCategory = (categoryId, level) => {
-    setExpandedCategories((prev) => (
-      
-      {
-        ...prev,
-        [level]: prev[level] === categoryId ? null : categoryId
-      }
-    ));
-  };
-
-  console.log('render');
+  console.log('res menu');
 
   const scrollDeals = (direction) => {
     const container = document.getElementById('deals-container');
@@ -169,7 +146,7 @@ export default function RestaurantPage() {
         </div>
 
         <div className="space-y-4">
-        <MenuSection menuList={menuList} getUniqueItems={getUniqueItems} toggleCategory={toggleCategory} expandedCategories={expandedCategories} level = {0} />
+        <MenuSection menuList={menuList} />
         </div>
       </div>
     </div>

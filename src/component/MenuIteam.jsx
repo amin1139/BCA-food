@@ -1,8 +1,9 @@
+import React, { memo } from 'react';
 import { GiRainbowStar } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { addIteam, minusQuantity } from "../utils/cartSlice";
 
-const MenuIteam = ({ uniqueItems, IMG_URL }) => {
+const MenuIteam = ({ itemCards, IMG_URL }) => {
 
     const dispatch = useDispatch()
 
@@ -15,12 +16,11 @@ const MenuIteam = ({ uniqueItems, IMG_URL }) => {
     }
 
     const cartIteam = useSelector((store) => store.cart.iteams)
-
-
-
+    console.log('menu iteam'); 
     return (
         <>
-            {uniqueItems.map((item) => {
+            {itemCards.map((card) => {
+                const item = card?.card?.info;
                 const cartItem = cartIteam.find(ci => ci.id === item.id)
                 return (<div key={item.id} className="flex gap-4">
                     {/* Item Details */}
@@ -88,4 +88,4 @@ const MenuIteam = ({ uniqueItems, IMG_URL }) => {
         </>
     )
 }
-export default MenuIteam
+export default memo(MenuIteam);
