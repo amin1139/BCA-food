@@ -16,7 +16,7 @@ const MenuIteam = ({ itemCards, IMG_URL }) => {
     }
 
     const cartIteam = useSelector((store) => store.cart.iteams)
-    console.log('menu iteam'); 
+    console.log('menu iteam');
     return (
         <>
             {itemCards.map((card) => {

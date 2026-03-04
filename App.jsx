@@ -10,7 +10,7 @@ function App() {
     <Provider store={appStore}>
       <div className="min-h-screen bg-white text-gray-900 transition-colors dark:bg-slate-900 dark:text-slate-100">
           <div><Navbar/></div>
-          <Outlet/> 
+          <div className="pt-20"><Outlet/></div> 
       </div>
     </Provider>
   );

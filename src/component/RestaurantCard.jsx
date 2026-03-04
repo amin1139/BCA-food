@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const RestaurantCard = ({ resData }) => {
 
@@ -12,7 +12,7 @@ const RestaurantCard = ({ resData }) => {
     aggregatedDiscountInfoV3
   } = resData;
 
-
+  console.log('restaurant card');
   return (
     <div className="w-full max-w-sm rounded-lg overflow-hidden border border-transparent p-2 hover:shadow-lg transition-all duration-300 cursor-pointer dark:hover:shadow-black/40">
       {/* Image Container */}
@@ -68,4 +68,4 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
-export default RestaurantCard;
+export default memo(RestaurantCard);

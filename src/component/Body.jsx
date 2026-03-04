@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useEffect, useState } from "react"; 
+import { useEffect, useMemo, useState } from "react"; 
 import FilterBtn from "./FilterBtn";
 import { Link } from "react-router";
 import { RES_LIST_URL } from "../utils/constant";
@@ -15,9 +15,23 @@ const RestaurantList = () => {
   const status = useOnlineStatus()
   const {resData, loading, error} = useFetchData(RES_LIST_URL)
 
-  const restaurants = resData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-  const headerTitle = resData?.data?.cards[1]?.card?.card?.header?.title
+  const restaurants = useMemo(() => {
+    const cards = resData?.data?.cards || [];
 
+    const restaurantCard = cards.find(
+      (c) => c?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+    );
+
+    return (
+      restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
+    );
+  }, [resData]);
+
+  const headerTitle = useMemo(() => {
+    const cards = resData?.data?.cards || [];
+    const title = cards.find(c => c?.card?.card?.title)?.card?.card?.title || 'Restaurants';
+    return title;
+  }, [resData]);
 
   useEffect(()=>{
     if(restaurants.length > 0) {setFilteredRestaurants(restaurants)};
@@ -86,7 +100,6 @@ const RestaurantList = () => {
   if(error){
     return <><h1>OOPs!!! </h1> <br /> <h1> SOMETHING WENT WRONG </h1> <h2>{error.status}</h2></>
   }
-  console.log(error);
   
 
   if (filteredRestaurants?.length === 0) {
@@ -142,7 +155,7 @@ const RestaurantList = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredRestaurants.map((res) => (
             <Link key={res?.info?.id} to={'restaurants/'+res?.info?.id}> 
-              <RestaurantCard key={res?.info?.id} resData={res?.info || []} />
+              <RestaurantCard resData={res?.info || []} />
             </Link>
           ))}
         </div>

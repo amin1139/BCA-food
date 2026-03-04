@@ -10,8 +10,6 @@ const MenuSection = ({ menuList}) => {
     setOpenId((prev) => (prev === categoryId ? null : categoryId));
   };
 
-  console.log('menu section');
-
   return (
     <>
       {menuList.map((menu) => {

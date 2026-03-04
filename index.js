@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App";
 import RestaurantList  from "./src/component/Body";
-import LoginPage from "./src/pages/LoginPage";
 import ErrorPage from "./src/pages/ErrorPage";
 import Cart from "./src/component/Cart";
 
@@ -31,10 +30,6 @@ const router = createBrowserRouter([
             {
                 path: 'about',
                 element: <Suspense fallback={<h1>LOADING .....</h1>}><AboutUs/></Suspense>
-            },
-            {
-                path: '/login',
-                element: <LoginPage />
             },
             {
                 path: '/cart',
